@@ -29,6 +29,9 @@ cp /srv/git/horde/horde/conf.php.dist /srv/git/horde/horde/conf.php
 chown -R horde /srv/git/*
 chown -R horde /srv/www/horde
 
+# needed for session handler
+chown -R horde /var/lib/php5
+
 # Setup local mysql -  we are not particularly interested in this daemon, thus it should not become process 1
 /usr/bin/mysql_install_db --datadir="/var/lib/mysql" --socket="/var/run/mysql/mysql.sock" --user=mysql --pid-file=/var/run/mysql/mysql.pid
 mkdir /var/run/mysql
