@@ -4,7 +4,7 @@
 useradd --uid 1000 -d /srv/git horde
 zypper ref
 ## the good
-zypper install -yl glibc-locale git apache2 apache2-mod_php5 php5 php5-gettext php5-ctype php5-mysql php5-json php5-pear php5-pdo php5-tokenizer php5-gmp php5-imap php5-dom php5-pear-Date php5-pear-Date_Holidays php5-pear-Date_Holidays_Germany php5-pear-Text_Wiki
+zypper install -yl glibc-locale git apache2 apache2-mod_php5 php5 php5-pear-channel-horde php5-gettext php5-ctype php5-mysql php5-json php5-pear php5-pdo php5-tokenizer php5-gmp php5-imap php5-dom php5-pear-Date php5-pear-Date_Holidays php5-pear-Date_Holidays_Germany php5-pear-Text_Wiki
 ## the bad - this needs to go into a flavor as by default it shouldn't be in an image
 zypper install -yl vim mc mariadb-client
 
@@ -14,12 +14,13 @@ zypper install -yl mariadb
 ## imp related
 zypper install -yl gpg2
 
+cp /etc/php5/cli/pear.conf /etc/php5/apache2/
 
 git config --global http.sslVerify false
 mkdir /srv/git
 mkdir /srv/www/horde
 cd /srv/git
-git clone --depth 2 https://github.com/horde/horde.git horde
+git clone --depth 5 --branch FRAMEWORK_5_2 https://github.com/horde/horde.git horde
 git clone --depth 1 https://github.com/horde/horde-support.git horde-support
 cp /srv/git/horde/horde/conf.php.dist /srv/git/horde/horde/conf.php
 
