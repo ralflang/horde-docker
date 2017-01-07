@@ -5,6 +5,12 @@ useradd --uid 1000 -d /srv/git horde
 zypper ref
 ## the good
 zypper install -yl glibc-locale git apache2 apache2-mod_php5 php5 php5-pear-channel-horde php5-gettext php5-ctype php5-mysql php5-json php5-pear php5-pdo php5-tokenizer php5-gmp php5-imap php5-dom php5-pear-Date php5-pear-Date_Holidays php5-pear-Date_Holidays_Germany php5-pear-Text_Wiki
+
+
+# Legacy and obscure stuff
+zypper install -yl php5-pear-DB php5-pear-MDB2
+
+
 ## the bad - this needs to go into a flavor as by default it shouldn't be in an image
 zypper install -yl vim mc mariadb-client
 
